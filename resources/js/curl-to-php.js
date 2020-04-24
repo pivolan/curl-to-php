@@ -54,7 +54,7 @@ function curlToPHP(curl) {
 	var req = extractRelevantPieces(cmd);
 
 	var code = promo+"\n"+start;
-	code += 'curl_setopt($ch, CURLOPT_VERBOSE, 0);\n' +
+	code += '\ncurl_setopt($ch, CURLOPT_VERBOSE, 0);\n' +
 		'curl_setopt($ch, CURLOPT_HEADER, 1);\n' +
 		'curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieJar);\n' +
 		'curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieJar);\n' +
