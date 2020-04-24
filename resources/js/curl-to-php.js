@@ -54,7 +54,7 @@ function curlToPHP(curl) {
 	var req = extractRelevantPieces(cmd);
 
 	var code = promo+"\n"+start;
-	code += '\ncurl_setopt($ch, CURLOPT_VERBOSE, 0);\n' +
+	code += 'curl_setopt($ch, CURLOPT_VERBOSE, 0);\n' +
 		'curl_setopt($ch, CURLOPT_HEADER, 1);\n' +
 		'curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieJar);\n' +
 		'curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieJar);\n' +
@@ -65,7 +65,7 @@ function curlToPHP(curl) {
 		'    curl_setopt($ch, CURLOPT_PROXY, $this->proxyInfo->ip.\':\'.$this->proxyInfo->port);\n' +
 		'    curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->proxyInfo->username.\':\'.$this->proxyInfo->password);\n' +
 		'    curl_setopt($ch, CURLOPT_PROXYTYPE, $this->proxyInfo->proxyType);\n' +
-		'}';
+		'}\n';
 	code += 'curl_setopt($ch, CURLOPT_URL, '+phpExpandEnv(req.url)+');\ncurl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);\n';
 
 	if (req.headers.length == 0 && !req.data.ascii && !req.data.files && !req.basicauth && !req.compressed) {
