@@ -285,17 +285,6 @@ function curlToPHP(curl) {
 	// s should not already be escaped! This function always returns a PHP
 	// string value.
 	function phpExpandEnv(s) {
-		var pos = s.indexOf("$");
-		if (pos > -1)
-		{
-			if (pos > 0 && s[pos-1] == '\\') {
-				// The $ is escaped, so strip the escaping backslash
-				s = s.substr(0, pos-1) + s.substr(pos);
-			} else {
-				// $ is not escaped, so treat it as an env variable
-				return '$_ENV["'+phpEsc(s).replace(/\$/g, '')+'"]';
-			}
-		}
 		return '\''+phpEsc(s)+'\'';
 	}
 
